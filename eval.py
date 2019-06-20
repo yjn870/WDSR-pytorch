@@ -35,7 +35,7 @@ def forward_x8(x):
         return torch.stack(sr).mean(0).permute(2, 0, 1)
 
 
-def test(dataset, loader, model, args, tag=''):
+def test(dataset, loader, model, args, device, tag=''):
     psnr = AverageMeter()
 
     # Set the model to evaluation mode
@@ -89,4 +89,4 @@ if __name__ == '__main__':
     dataset = DIV2K(args, train=False)
     dataloader = DataLoader(dataset=dataset, batch_size=1)
 
-    test(dataset, dataloader, model, args)
+    test(dataset, dataloader, model, device, args)
